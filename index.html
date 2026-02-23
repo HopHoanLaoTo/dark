@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kỷ Yếu Thanh Xuân</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Quicksand',sans-serif;
+}
+
+body{
+    background:#f8f5ef;
+    color:#333;
+    scroll-behavior:smooth;
+    overflow-x: hidden; 
+}
+
+section{
+    padding:70px 10%;
+}
+
+h2{
+    text-align:center;
+    font-size:32px;
+    margin-bottom:40px;
+    color:#5b7c99;
+}
+
+/* HERO */
+.hero{
+    height:100vh;
+    background:linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)),url("anhlop.jpeg");
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:white;
+}
+
+.hero h1{
+    font-size:48px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    font-size:22px;
+}
+
+.music-btn{
+    position:fixed;
+    top:20px;
+    right:20px;
+    background:#fff;
+    border:none;
+    padding:10px 15px;
+    border-radius:20px;
+    cursor:pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* STATS */
+.stats{
+    display:flex;
+    justify-content:space-around;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.stat{
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    width:200px;
+    text-align:center;
+    box-shadow:0 10px 20px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.number{
+    font-size:36px;
+    font-weight:700;
+    color:#ff8c6b;
+}
+
+/* CARD */
+.cards{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    width:260px;
+    text-align:center;
+    box-shadow:0 10px 20px rgba(0,0,0,.08);
+}
+
+.card img{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    margin-bottom:10px;
+    object-fit: cover;
+}
+
+/* ACTIVITY */
+.activity-container{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    flex-wrap:wrap;
+}
+
+.activity-item{
+    background:white;
+    padding:15px;
+    width:280px;
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+    border-radius:12px;
+    transition:.4s;
+}
+
+.activity-item img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+    border-radius:8px;
+}
+
+/* CSS CHO LINH VẬT */
+#mascot {
+    position: fixed;
+    width: 100px; 
+    height: auto;
+    z-index: 9999;
+    top: 50px;
+    left: 50px;
+    pointer-events: none; 
+    will-change: transform; 
+}
+/* FEEDBACK */
+.feedback-section{
+    background:#f0ebe5;
+    padding:80px 10%;
+    text-align:center;
+}
+
+.feedback-box{
+    max-width:600px;
+    margin:auto;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,.1);
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.feedback-box input,
+.feedback-box textarea{
+    padding:12px;
+    border-radius:10px;
+    border:1px solid #ddd;
+    font-size:14px;
+    outline:none;
+}
+
+.feedback-box input:focus,
+.feedback-box textarea:focus{
+    border-color:#7db8a3;
+}
+
+.feedback-box button{
+    background:#5b7c99;
+    color:white;
+    padding:12px;
+    border:none;
+    border-radius:20px;
+    cursor:pointer;
+    font-weight:600;
+    transition:.3s;
+}
+
+.feedback-box button:hover{
+    background:#3f5f7a;
+}
+</style>
+</head>
+
+<body>
+
+<img id="mascot" src="linhvat.png" alt="Linh vật">
+
+<div class="hero">
+    <h1>Ba năm – Một thanh xuân</h1>
+    <p>Một tập thể không quên ❤️</p>
+</div>
+
+<button class="music-btn" onclick="toggleMusic()" id="btn-nhac">🎵 Phát Nhạc</button>
+
+<audio id="audio-file" loop>
+    <source src="nhacnen.mp3" type="audio/mpeg">
+</audio>
+
+<section>
+<h2>Thành Tích Nổi Bật</h2>
+<div class="stats">
+    <div class="stat"><div class="number" data-target="23">0</div><p>🏆 Giải thưởng</p></div>
+    <div class="stat"><div class="number" data-target="23">0</div><p>📚 Học sinh giỏi</p></div>
+    <div class="stat"><div class="number" data-target="10">0</div><p>🎭 Hoạt động</p></div>
+    <div class="stat"><div class="number" data-target="100">0</div><p>❤️ Kỷ niệm</p></div>
+</div>
+</section>
+
+<section>
+<h2>Thành Tích Cá Nhân</h2>
+<div class="cards">
+
+<div class="card">
+    <img src="avatar_minhnghia.jpg">
+    <h3>Minh Nghĩa</h3>
+    <p>🏅 Giải Ba Quốc Gia ATGT</p>
+    <p>📘 IELTS 7.0</p>
+    <p>🥈 Giải Nhì Lý</p>
+</div>
+
+<div class="card">
+    <img src="avatar_minhanh.jpg">
+    <h3>Minh Anh</h3>
+    <p>🥋 Huy chương Taekwondo</p>
+    <p>📘 IELTS 7.0</p>
+    <p>🌟 Học Sinh Giỏi Anh</p>
+</div>
+
+<div class="card">
+    <img src="avatar_vananh.jpg">
+    <h3>Vân Anh</h3>
+    <p>♟ 5 Huy chương Đồng Cờ Tướng</p>
+    <p>🥈 2 Huy chương Bạc Cờ Tướng</p>
+</div>
+
+</div>
+</section>
+
+<section>
+<h2>Hành Trình Thanh Xuân</h2>
+<div class="activity-container">
+    <div class="activity-item">
+        <img src="anh1.jpg">
+        <p>Văn Nghệ</p>
+    </div>
+    <div class="activity-item">
+        <img src="anh2.jpg">
+        <p>Hoạt Động Trải Nghiệm</p>
+    </div>
+    <div class="activity-item">
+        <img src="anh3.jpg">
+        <p>Liên Hoan</p>
+    </div>
+</div>
+</section>
+
+<!-- DÁN ĐOẠN NÀY NGAY TẠI ĐÂY -->
+<section class="feedback-section">
+    <h2>Góp Ý Cho Chúng Mình 💌</h2>
+
+    <div class="feedback-box">
+        <input type="text" placeholder="Họ và tên">
+        <input type="email" placeholder="Email của bạn">
+        <textarea rows="5" placeholder="Nhập ý kiến của bạn tại đây..."></textarea>
+        <button onclick="sendFeedback()">Gửi góp ý</button>
+    </div>
+</section>
+
+<footer style="background-color: #333; color: white; padding: 20px; text-align: center; margin-top: 50px;">
+    <p><strong>Thông tin nhóm:</strong> Team 12A1</p>
+    <p>Email: <a href="mailto:kietlac@gmail.com" style="color: #ffcc00;">kietlac@gmail.com</a></p>
+    <p>Cập nhật: 21/02/2026</p>
+</footer>
+
+<script>
+// CODE CHẠY SỐ CẢ 4 MỤC BAO MƯỢT
+const counters = document.querySelectorAll('.number');
+counters.forEach(counter => {
+    let count = 0;
+    const target = +counter.getAttribute('data-target');
+    const increment = Math.max(1, Math.ceil(target / 50)); 
+
+    const updateCount = () => {
+        if (count < target) {
+            count += increment;
+            if (count > target) count = target; 
+            counter.innerText = count;
+            setTimeout(updateCount, 30);
+        } else {
+            counter.innerText = target;
+        }
+    };
+    
+    // Tạo độ trễ xíu cho ngầu lúc load trang
+    setTimeout(updateCount, 500); 
+});
+
+// CODE PHÁT NHẠC MP3
+const audio = document.getElementById('audio-file');
+const btnNhac = document.getElementById('btn-nhac');
+function toggleMusic() {
+    if (audio.paused) {
+        audio.play();
+        btnNhac.innerText = "⏸ Dừng Nhạc";
+    } else {
+        audio.pause();
+        btnNhac.innerText = "🎵 Phát Nhạc";
+    }
+}
+
+// CODE LINH VẬT BAY NHẢY CHUẨN ĐÉT KHÔNG LỌT MÀN HÌNH
+const mascot = document.getElementById('mascot');
+let posX = Math.random() * (window.innerWidth - 100);
+let posY = Math.random() * (window.innerHeight - 100);
+let dirX = 2.5; 
+let dirY = 2.5; 
+
+function animateMascot() {
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+    const mascotWidth = mascot.offsetWidth;
+    const mascotHeight = mascot.offsetHeight;
+
+    if (posX + mascotWidth > screenWidth) posX = screenWidth - mascotWidth;
+    if (posY + mascotHeight > screenHeight) posY = screenHeight - mascotHeight;
+    if (posX < 0) posX = 0;
+    if (posY < 0) posY = 0;
+
+    if (posX + mascotWidth >= screenWidth || posX <= 0) dirX *= -1;
+    if (posY + mascotHeight >= screenHeight || posY <= 0) dirY *= -1;
+
+    posX += dirX;
+    posY += dirY;
+
+    mascot.style.left = posX + 'px';
+    mascot.style.top = posY + 'px';
+
+    requestAnimationFrame(animateMascot);
+}
+
+window.onload = animateMascot;
+function sendFeedback(){
+    alert("Cảm ơn bạn đã góp ý ❤️");
+}
+</script>
+
+</body>
+</html>
